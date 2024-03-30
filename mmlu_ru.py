@@ -246,15 +246,18 @@ def evaluate_all_subjects(lang: str, k_shot: int, output_dir: str,
         if pathlib.Path(jsonl_filepath).exists():
             logger.info(f"File already exists! Please manually verify that it wasn't partially interrupted.")
             continue
-        evaluate_subject(
-            subject=each_subject,
-            lang=lang,
-            k_shot=k_shot,
-            jsonl_filepath=jsonl_filepath,
-            maxlen=maxlen, convtype=convtype,
-            tokenizer=tokenizer,
-            model=model,
-        )
+        try:
+            evaluate_subject(
+                subject=each_subject,
+                lang=lang,
+                k_shot=k_shot,
+                jsonl_filepath=jsonl_filepath,
+                maxlen=maxlen, convtype=convtype,
+                tokenizer=tokenizer,
+                model=model,
+            )
+        except:
+            print('Got an error.  Skipping subject')
 
 def store_results(output_dir: str):
     (subcategories_df, categories_df, total_df) = stats.calculate_accuracy_from_directory(dirpath=output_dir)
