@@ -147,16 +147,8 @@ def load_saiga_model(model_id: str) -> tp.Tuple:
 
 
 def load_model_components(model_id: str) -> tp.Tuple:
-    llama_models = ["huggyllama/llama-7b", "huggyllama/llama-13b", "huggyllama/llama-30b", "huggyllama/llama-65b",
-                    "TheBloke/Llama-2-7B-fp16", "TheBloke/Llama-2-13B-fp16", "TheBloke/Llama-2-70B-fp16"]
-    saiga_models = ["IlyaGusev/saiga_7b_lora", "IlyaGusev/saiga_13b_lora", "IlyaGusev/saiga_30b_lora", "IlyaGusev/saiga_65b_lora"]
-
-    if model_id in llama_models:
-        return load_llama_model(model_id)
-    elif model_id in saiga_models:
-        return load_saiga_model(model_id)
-    else:
-        raise Exception(f"Probably not supported: {model_id}.")
+    return load_llama_model(model_id)
+   
 
 def calculate_token_interest_probs(
     input_prompt: str,
