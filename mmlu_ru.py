@@ -67,7 +67,6 @@ def get_pretty_subject(subject: str, lang: str) -> str:
 
 def get_prompt_from_dataframes(dev_df: pd.DataFrame, test_df: pd.DataFrame,
                                k: int, test_iloc_idx: int, lang: str, subject: str, conversation_type: str):
-    assert 0 <= k <= 5
     headline_prefix = LANGUAGE_CONFIG[lang]["headline_prefix"]
     headline_postfix = get_pretty_subject(subject=subject, lang=lang)
     headline = f"{headline_prefix} {headline_postfix}.\n\n"
