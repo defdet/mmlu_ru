@@ -285,5 +285,6 @@ if __name__ == "__main__":
     parser.add_argument("--lang", type=str)
     parser.add_argument("--output_dir", type=str)
     args = parser.parse_args()
+    print(f"Doing {args.lang} language")
     main(args.hf_model_id, args.k_shot, args.lang, args.output_dir)
     logger.info("Done!")
