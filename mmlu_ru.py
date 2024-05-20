@@ -112,7 +112,6 @@ def get_prompt_from_dataframes(dev_df: pd.DataFrame, test_df: pd.DataFrame,
 def load_llama_model(model_id: str) -> tp.Tuple:
     tokenizer = transformers.AutoTokenizer.from_pretrained(
         model_id,
-        use_fast=False,
     )
     model = transformers.AutoModelForCausalLM.from_pretrained(
         model_id,
